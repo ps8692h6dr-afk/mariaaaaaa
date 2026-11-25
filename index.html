@@ -1,0 +1,644 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MARIA — The Unofficial Files</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --glass: rgba(255,255,255,.24);
+  --border: rgba(255,255,255,.55);
+  --ink: #26354b;
+  --blue: #b8ddf5;
+  --purple: #d4c9f4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: var(--ink);
+  background: #e9f1fc;
+  overflow-x: hidden;
+}
+
+nav {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,.13);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,.3);
+}
+
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: white;
+  font-size: 15px;
+}
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(32,45,70,.12),
+      rgba(30,42,70,.45)
+    ),
+    url("images/photo-01.jpg") center 35% / cover no-repeat;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(174,207,255,.25),
+    rgba(203,185,255,.24)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: appear 1.5s ease both;
+}
+
+.hero-tag {
+  display: inline-block;
+  padding: 10px 19px;
+  border-radius: 50px;
+  color: white;
+  background: rgba(255,255,255,.17);
+  border: 1px solid rgba(255,255,255,.45);
+  backdrop-filter: blur(15px);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(75px, 17vw, 175px);
+  letter-spacing: -9px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 5px 40px rgba(0,0,0,.2);
+  margin: 25px 0 10px;
+}
+
+.hero p {
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 15px #0005;
+}
+
+.hero-button {
+  display: inline-block;
+  margin-top: 35px;
+  padding: 15px 28px;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,.65);
+  background: rgba(255,255,255,.2);
+  backdrop-filter: blur(15px);
+  font-weight: 900;
+  transition: .3s;
+}
+
+.hero-button:hover {
+  background: rgba(255,255,255,.4);
+  transform: translateY(-5px);
+}
+
+.section {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 8%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(207,225,255,.45),
+    rgba(215,202,255,.48)
+  );
+}
+
+.bg-one {
+  background-image: url("images/photo-02.jpg");
+}
+
+.bg-two {
+  background-image: url("images/photo-03.jpg");
+}
+
+.bg-three {
+  background-image: url("images/photo-04.jpg");
+}
+
+.bg-four {
+  background-image: url("images/photo-05.jpg");
+}
+
+.glass {
+  position: relative;
+  z-index: 2;
+  width: min(720px, 100%);
+  padding: 42px;
+  background: rgba(255,255,255,.25);
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 28px;
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow: 0 20px 70px rgba(30,45,75,.12);
+}
+
+.glass h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(30px, 5vw, 48px);
+  letter-spacing: -2px;
+  margin-bottom: 25px;
+  color: #26354b;
+}
+
+.glass p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #33445e;
+  font-weight: 700;
+}
+
+.small-label {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 900;
+  color: #405d83;
+  margin-bottom: 15px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 13px;
+  margin-top: 25px;
+}
+
+.info {
+  background: rgba(255,255,255,.35);
+  border: 1px solid rgba(255,255,255,.5);
+  border-radius: 15px;
+  padding: 17px;
+}
+
+.info small {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 900;
+  color: #607b9c;
+  margin-bottom: 7px;
+}
+
+.info strong {
+  font-size: 18px;
+}
+
+.observation {
+  margin-top: 15px;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.34);
+  border: 1px solid rgba(255,255,255,.5);
+}
+
+.observation h3 {
+  font-size: 17px;
+  margin-bottom: 7px;
+}
+
+.observation p {
+  font-size: 14px;
+}
+
+.archive {
+  padding: 100px 7%;
+  background: linear-gradient(135deg,#e5efff,#e8e3fa);
+}
+
+.archive-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.archive-title h2 {
+  font-family: 'Space Grotesk';
+  font-size: clamp(35px,7vw,65px);
+  letter-spacing: -3px;
+}
+
+.archive-title p {
+  color: #71829b;
+  margin-top: 10px;
+  font-weight: 800;
+}
+
+.photo-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 25px;
+}
+
+.photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 23px;
+  min-height: 420px;
+  background: white;
+  box-shadow: 0 15px 40px #8294b222;
+}
+
+.photo img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s;
+}
+
+.photo:hover img {
+  transform: scale(1.04);
+}
+
+.photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 35px 22px 20px;
+  color: white;
+  background: linear-gradient(transparent,rgba(25,35,60,.8));
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.photo-caption small {
+  display: block;
+  font-size: 11px;
+  margin-top: 5px;
+  opacity: .85;
+}
+
+.final-section {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
+  background:
+    linear-gradient(rgba(80,95,140,.35),rgba(70,80,130,.5)),
+    url("images/photo-01.jpg") center / cover no-repeat;
+}
+
+.final-glass {
+  width: min(650px,95%);
+  padding: 45px 30px;
+  border-radius: 30px;
+  background: rgba(255,255,255,.24);
+  backdrop-filter: blur(22px);
+  border: 1px solid rgba(255,255,255,.6);
+  color: white;
+}
+
+.final-glass h2 {
+  font-family: 'Space Grotesk';
+  font-size: clamp(35px,7vw,60px);
+  margin-bottom: 15px;
+}
+
+.final-glass p {
+  line-height: 1.9;
+  font-weight: 800;
+}
+
+footer {
+  background: #e8effb;
+  text-align: center;
+  padding: 30px;
+  color: #63758e;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width:700px) {
+  .hero h1 { letter-spacing: -5px; }
+  .section { padding: 80px 6%; }
+  .glass { padding: 27px; }
+  .photo-grid { grid-template-columns: 1fr; }
+  .photo img { height: 430px; }
+  .info-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">MARIA.</div>
+  <div class="nav-label">UNOFFICIAL FILES 📁</div>
+</nav>
+
+<!-- OPENING SCREEN -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">THE UNOFFICIAL DOCUMENTARY</div>
+    <h1>Maria.</h1>
+    <p>One human. Many questionable decisions. 😂</p>
+    <a href="#profile" class="hero-button">ENTER THE FILE ↓</a>
+  </div>
+</header>
+
+<!-- PROFILE -->
+<section class="section bg-one" id="profile">
+  <div class="glass reveal">
+    <div class="small-label">01 / SUBJECT PROFILE</div>
+    <h2>So, who is Maria?</h2>
+    <p>
+      Meet Maria. A 14-year-old human being whose
+      existence deserves its own documentary.
+      The available research suggests a very interesting
+      personality and an impressive ability to be
+      completely unpredictable.
+    </p>
+
+    <div class="info-grid">
+      <div class="info">
+        <small>NAME</small>
+        <strong>Maria</strong>
+      </div>
+      <div class="info">
+        <small>AGE</small>
+        <strong>14</strong>
+      </div>
+      <div class="info">
+        <small>FORMER HOME</small>
+        <strong>Dubai 🇦🇪</strong>
+      </div>
+      <div class="info">
+        <small>CURRENT COUNTRY</small>
+        <strong>Iran 🇮🇷</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIGATION -->
+<section class="section bg-two">
+  <div class="glass reveal">
+    <div class="small-label">02 / FIELD INVESTIGATION</div>
+    <h2>Important discoveries. 🔍</h2>
+
+    <div class="observation">
+      <h3>⚽ The 5 AM FIFA Incident</h3>
+      <p>
+        The neighbour apparently plays FIFA at 5 AM.
+        Scientists are still trying to understand
+        what could possibly be happening at that hour.
+      </p>
+    </div>
+
+    <div class="observation">
+      <h3>🤡 The Chaos Department</h3>
+      <p>
+        Subject has demonstrated a remarkable talent
+        for turning normal situations into comedy.
+      </p>
+    </div>
+
+    <div class="observation">
+      <h3>🧠 Brain Loading...</h3>
+      <p>
+        Sometimes 100% operational.
+        Sometimes the system needs a restart.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="section bg-three">
+  <div class="glass reveal">
+    <div class="small-label">03 / OFFICIAL RECOGNITION</div>
+    <h2>Maria's awards. 🏆</h2>
+
+    <div class="observation">
+      <h3>🏆 Professional Randomizer</h3>
+      <p>For keeping absolutely nobody prepared for what comes next.</p>
+    </div>
+
+    <div class="observation">
+      <h3>🎭 Plot Twist Specialist</h3>
+      <p>For maintaining an unpredictable storyline.</p>
+    </div>
+
+    <div class="observation">
+      <h3>🧩 Unsolved Mystery</h3>
+      <p>For occasionally being impossible to understand.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATISTICS -->
+<section class="section bg-four">
+  <div class="glass reveal">
+    <div class="small-label">04 / SCIENTIFICALLY QUESTIONABLE</div>
+    <h2>Official statistics. 📊</h2>
+
+    <div class="info-grid">
+      <div class="info">
+        <small>UNPREDICTABILITY</small>
+        <strong>99%</strong>
+      </div>
+      <div class="info">
+        <small>LOGIC STATUS</small>
+        <strong>404</strong>
+      </div>
+      <div class="info">
+        <small>RANDOMNESS</small>
+        <strong>∞</strong>
+      </div>
+      <div class="info">
+        <small>RESEARCH HOURS</small>
+        <strong>0</strong>
+      </div>
+    </div>
+    <p style="margin-top:20px;font-size:12px;">
+      *All statistics are fictional. Please do not cite this website in scientific research.
+    </p>
+  </div>
+</section>
+
+<!-- PHOTO ARCHIVE -->
+<section class="archive" id="gallery">
+  <div class="archive-title reveal">
+    <h2>The photo archive.</h2>
+    <p>Visual evidence collected during the investigation 📸</p>
+  </div>
+
+  <div class="photo-grid">
+
+    <div class="photo reveal">
+      <img src="images/photo-01.jpg" alt="Photo of Maria">
+      <div class="photo-caption">
+        EXHIBIT A.
+        <small>The main character has entered the room.</small>
+      </div>
+    </div>
+
+    <div class="photo reveal">
+      <img src="images/photo-02.jpg" alt="Photo of Maria">
+      <div class="photo-caption">
+        EXHIBIT B.
+        <small>Evidence that the camera was involved.</small>
+      </div>
+    </div>
+
+    <div class="photo reveal">
+      <img src="images/photo-03.jpg" alt="Photo of Maria">
+      <div class="photo-caption">
+        EXHIBIT C.
+        <small>Another important historical document.</small>
+      </div>
+    </div>
+
+    <div class="photo reveal">
+      <img src="images/photo-04.jpg" alt="Photo of Maria">
+      <div class="photo-caption">
+        EXHIBIT D.
+        <small>The investigation continues.</small>
+      </div>
+    </div>
+
+    <div class="photo reveal">
+      <img src="images/photo-05.jpg" alt="Photo of Maria">
+      <div class="photo-caption">
+        EXHIBIT E.
+        <small>Case remains open.</small>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FINAL SCREEN -->
+<section class="final-section">
+  <div class="final-glass reveal">
+    <div class="small-label" style="color:white;">FINAL REPORT / 006</div>
+    <h2>Case still open. 📂</h2>
+    <p>
+      After approximately zero hours of professional
+      research, one conclusion has been reached:
+      Maria is definitely an interesting human.
+      <br><br>
+      Further investigation may be required.
+    </p>
+  </div>
+</section>
+
+<footer>
+  THE MARIA FILES. <br><br>
+  An unofficial friendship project. 🕵️
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(element => {
+  observer.observe(element);
+});
+</script>
+
+</body>
+</html>
